@@ -70,6 +70,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "rest_framework",
     "django_celery_beat",
+    "taggit",
 ]
 
 LOCAL_APPS = [
@@ -282,7 +283,6 @@ ACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.SocialAccountAdapter"
 
-
-# Your stuff...
-# -----------------------------------------------------------------------------
-
+# Taggit
+# ----------------------------------------------------------------------------
+TAGGIT_CASE_INSENSITIVE = True

@@ -84,9 +84,6 @@ To run a celery worker:
 Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
 
 
-
-
-
 Deployment
 ----------
 
