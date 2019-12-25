@@ -1,6 +1,5 @@
 # Options for the status flow of the question
-from django.utils.translation import gettext as _
-
+from django.utils.translation import gettext_lazy as _
 
 ASKED = 0       # When the question is just asked, the default
 APPROVED = 1    # If the question was approved to be sent to the answering process

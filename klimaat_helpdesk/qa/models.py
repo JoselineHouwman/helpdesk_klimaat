@@ -10,13 +10,44 @@ class Question(models.Model):
     """ This model is the core of the application. Each question marks the flow of the application from the moment
     where it was asked until the moment it is published on the website.
     """
-    question = models.TextField(_('Question'), null=False, blank=False)
-    asked_by = models.ForeignKey(_('Asked by'), settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    asked_by_name = models.CharField(_('Name of the person asking'), null=True, blank=True, help_text='In case there is name but no e-mail')
-    status = models.IntegerField(_('Status'), choices=STATUS_CHOICES, default=ASKED)
-    handler = models.ForeignKey(_('Handler'), settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    answerer = models.ForeignKey(_('Answered by'), settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    reviewer = models.ForeignKey(_('Reviewd by'), settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True)
+    question = models.TextField(verbose_name=_('Question'), null=False, blank=False)
+
+    asked_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 blank=True,
+                                 related_name='questions',
+                                 verbose_name=_('Asked by'))
+
+    asked_by_name = models.CharField(max_length=255,
+        verbose_name=_('Name of the person asking'),
+        null=True,
+        blank=True,
+        help_text='In case there is name but no e-mail')
+
+    status = models.IntegerField(verbose_name=_('Status'), choices=STATUS_CHOICES, default=ASKED)
+
+    handler = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.SET_NULL,
+                                null=True,
+                                blank=True,
+                                verbose_name=_('Handler'),
+                                related_name='handling')
+
+    answerer = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 blank=True,
+                                 verbose_name=_('Answered by'),
+                                 related_name='answers')
+
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 blank=True,
+                                 verbose_name=_('Reviewd by'),
+                                 related_name='reviews')
+
     tags = TaggableManager()
 
     date_asked = models.DateTimeField(auto_now_add=True)
@@ -32,4 +63,8 @@ class Question(models.Model):
         statuses = dict(STATUS_CHOICES)
         return statuses[self.status]
 
-
+    def __str__(self):
+        name = self.asked_by or self.asked_by_name or 'anonymous'
+        statuses = dict(STATUS_CHOICES)
+        status = statuses[self.status]
+        return f"Question {self.id} by {name}, current status: {status}"
