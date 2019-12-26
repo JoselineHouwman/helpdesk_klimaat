@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags i18n %}
+{% block title %}{% trans "Review of Question" %}{% endblock title %}
+{% block content %}
+  <div class="container">
+    <h1>Reviewing a Question</h1>
+    <div class="row">
+      <div class="col-md-9">
+        <h3>Question</h3>
+        {{ review.question.question }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        {% for answer in review.question.answers.all %}
+          {{ answer }}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form method="post" class="form">{% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" value="{% trans "Submit Answer" %}" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

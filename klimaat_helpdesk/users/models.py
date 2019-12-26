@@ -13,3 +13,11 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
+
+    @property
+    def role_name(self):
+        roles = dict(USER_ROLES)
+        return roles[self.role]
+
+    def __str__(self):
+        return f"{self.name} <{self.email}>"

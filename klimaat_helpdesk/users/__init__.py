@@ -12,5 +12,6 @@ USER_ROLES = (
     (USER, _('User')),
     (EXPERT, _('Expert')),
     (REVIEWER, _('Reviewer')),
+    (HANDLER, _('Handler')),
     (EDITOR, _('Editor')),
 )

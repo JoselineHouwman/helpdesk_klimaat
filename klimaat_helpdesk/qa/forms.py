@@ -6,6 +6,7 @@ from klimaat_helpdesk.users import HANDLER
 
 User = get_user_model()
 
+
 class AddNewQuestion(forms.Form):
     name = forms.CharField(label=_('Your name'),
                            max_length=255,
@@ -26,5 +27,11 @@ class AddNewQuestion(forms.Form):
 
 
 class AssignHandler(forms.Form):
-    queryset = User.objects.filter(role=HANDLER)
-    handler = forms.ModelChoiceField(queryset)
+    queryset = User.objects.filter(role__gte=HANDLER)
+    handler = forms.ModelChoiceField(queryset, required=True)
+
+    _errors = {'invalid Handler': _('Invalid Handler')}
+
+    def __init__(self, *args, **kwargs):
+        print(args)
+        print(kwargs)

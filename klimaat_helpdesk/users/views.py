@@ -1,9 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
-from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import DetailView, RedirectView, UpdateView, CreateView, FormView
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+
+from klimaat_helpdesk.users.forms import CreateUser
 
 User = get_user_model()
 
@@ -48,3 +50,29 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+
+class CreateUserView(FormView):
+    form_class = CreateUser
+    template_name = 'users/create_user.html'
+    success_url = '/'
+
+    def form_valid(self, form):
+        user = User.objects.create(
+            username=form.cleaned_data['email'],
+            email=form.cleaned_data['email'],
+            name=form.cleaned_data['name'],
+            role=form.cleaned_data['role']
+        )
+        user.save()
+        return super(CreateUserView, self).form_valid(form)
+
+    def get_success_url(self):
+        next = self.request.GET.get('next', None)
+        if next:
+            return next
+
+        return self.success_url
+
+
+create_user = CreateUserView.as_view()

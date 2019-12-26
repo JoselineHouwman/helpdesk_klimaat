@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n %}
+{% block content %}
+  <div class="container">
+    <h1>{% trans "Question details" %}</h1>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form method="post" class="form">{% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" value="Send message">
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Answers for this question</h3>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        {% for answer in question.answers.all %}
+          <div class="card">
+            <div class="card-header">
+              {{ answer.author }}
+              <small>{{ question.date_submitted }}</small>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ answer.answer }}.</p>
+            </div>
+            <div class="card-footer">
+              &nbsp;
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <h3>Reviews for this question</h3>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        {% for review in question.reviews.all %}
+          <div class="card">
+            <div class="card-header">
+              {{ review.reviewer }}
+              <small>{{ review.date_submitted }}</small>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ review.remarks }}.</p>
+            </div>
+            <div class="card-footer">
+              &nbsp;
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

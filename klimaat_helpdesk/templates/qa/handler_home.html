@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+  <div class="row">
+    <h3>Handler view</h3>
+  </div>
+  <div class="row">
+  <div class="col-md-6 mx-auto">
+    <p>The Handler is the point of contact between experts, reviewers and the platform. The handler is the one that
+      needs to choose an expert, a reviewer, and compile the answer in an appropriate format for publication on the
+      website.</p>
+    <div>
+
+    </div>
+    {% for question in questions %}
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              {% if question.asked_by %}
+                {% if question.asked_by.username %}
+                  <a href="{% url 'users:detail' question.asked_by.username %}">{{ question.asked_by }}</a>
+                {% else %}
+                  {{ question.asked_by }}
+                {% endif %}
+              {% else %}
+                Anonymous
+              {% endif %}
+              <small>{{ question.date_asked }}</small>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ question.question }}.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                {% if question.expert %}
+                  <b>Expert</b>: {{ question.expert.name }} &lt;{{ question.expert.email }}&gt;
+                {% else %}
+                  <a href="{% url 'questions:assign-expert' question.pk %}" class="btn btn-primary">Assign Expert</a>
+                {% endif %}
+              </li>
+              <li class="list-group-item">
+                {% if question.reviewer %}
+                  <b>Reviewer</b>: {{ question.reviewer.name }} &lt;{{ question.reviewer.email }}&gt;
+                {% else %}
+                  <a href="{% url 'questions:assign-reviewer' question.pk %}" class="btn btn-primary">Assign
+                    Reviewer</a>
+                {% endif %}
+              </li>
+            </ul>
+            <div class="card-footer">
+              &nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
