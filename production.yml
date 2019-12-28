@@ -56,14 +56,13 @@ services:
     image: klimaat_helpdesk_production_celerybeat
     command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: klimaat_helpdesk_production_flower
-    ports:
-      - "5555:5555"
-    command: /start-flower
+#  flower:
+#    <<: *django
+#    image: klimaat_helpdesk_production_flower
+#    ports:
+#      - "5555:5555"
+#    command: /start-flower
 
-  
   awscli:
     build:
       context: .

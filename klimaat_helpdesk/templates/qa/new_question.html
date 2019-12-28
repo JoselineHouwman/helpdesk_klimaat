@@ -3,12 +3,19 @@
 
 {% block content %}
   <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>{% trans "Welcome to Klimaat Helpdesk" %}</h2>
+      <p>{% blocktrans %}You can submit a question below. Both your name and e-mail are optional. The idea is that if you provide us with an e-mail, we will be able to let you know of the progress with getting an answer for your concerns.{% endblocktrans %}</p>
+    <p>{% blocktrans %}All this website was developed keeping in mind multi-language support. This means that every message you see on the website can be translated very easily to other languages.{% endblocktrans %}</p>
+    </div>
+  </div>
   <h1>{% trans "Ask your question" %}</h1>
     <div class="row">
       <div class="col-md-6 mx-auto">
         <form method="post" class="form">{% csrf_token %}
           {{ form|crispy }}
-          <input type="submit" value="Send message">
+          <input type="submit" value="{% trans "Send question" %}">
         </form>
       </div>
     </div>

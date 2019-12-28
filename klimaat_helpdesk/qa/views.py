@@ -23,6 +23,7 @@ class NewQuestion(FormView):
         user = None
         if form.cleaned_data['email']:
             user, created = User.objects.get_or_create(
+                username=form.cleaned_data['email'],
                 email=form.cleaned_data['email'],
                 name=form.cleaned_data['name'])
 
@@ -61,7 +62,7 @@ class AssignHandlerView(UpdateView):
     model = Question
     fields = ['handler', ]
     template_name = 'qa/assign_handler.html'
-    success_url = reverse_lazy('questions:list')
+    success_url = reverse_lazy('questions:editor-home')
     context_object_name = 'question'
 
     def get_form(self, *args, **kwargs):
@@ -82,7 +83,7 @@ class AssignExpert(UpdateView):
     model = Question
     fields = ['expert', ]
     template_name = 'qa/assign_expert.html'
-    success_url = reverse_lazy('questions:list')
+    success_url = reverse_lazy('questions:handler-home')
 
     def get_form(self, *args, **kwargs):
         form = super(AssignExpert, self).get_form(*args, **kwargs)
@@ -107,7 +108,7 @@ class AssignReviewer(UpdateView):
     model = Question
     fields = ['reviewer', ]
     template_name = 'qa/assign_reviewer.html'
-    success_url = reverse_lazy('questions:list')
+    success_url = reverse_lazy('questions:handler-home')
 
     def get_form(self, *args, **kwargs):
         form = super(AssignReviewer, self).get_form(*args, **kwargs)
@@ -140,6 +141,9 @@ class CreateAnswer(UpdateView):
         self.object.save()
         return super(CreateAnswer, self).form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('questions:question-details', args=[self.object.question.pk])
+
 
 create_answer = CreateAnswer.as_view()
 
@@ -156,18 +160,17 @@ class ReviewAnswer(UpdateView):
         self.object.save()
         return super(ReviewAnswer, self).form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('questions:question-details', args=[self.object.question.pk])
+
 
 review_answer = ReviewAnswer.as_view()
 
 
-class QuestionDetails(UpdateView):
+class QuestionDetails(DetailView):
     model = Question
     template_name = 'qa/question_details.html'
-
-    fields = '__all__'
-
-    def get_success_url(self):
-        return self.request.path
+    context_object_name = 'question'
 
 
 question_details = QuestionDetails.as_view()

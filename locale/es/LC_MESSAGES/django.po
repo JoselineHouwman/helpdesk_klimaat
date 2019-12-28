@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 16:37+0100\n"
+"POT-Creation-Date: 2019-12-28 01:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,126 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: klimaat_helpdesk/qa/__init__.py:11
+msgid "Asked"
+msgstr ""
+
+#: klimaat_helpdesk/qa/__init__.py:12
+msgid "Approved"
+msgstr ""
+
+#: klimaat_helpdesk/qa/__init__.py:13
+msgid "Answering"
+msgstr ""
+
+#: klimaat_helpdesk/qa/__init__.py:14
+msgid "Reviewing"
+msgstr ""
+
+#: klimaat_helpdesk/qa/__init__.py:15
+msgid "Answered"
+msgstr ""
+
+#: klimaat_helpdesk/qa/apps.py:7
+msgid "Questions & Answers"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:11
+msgid "Your name"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:14
+msgid "Only if you would like to share your name with us"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:16
+msgid "Your email"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:18
+msgid "If you want to be updated about your question"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:20
+msgid "Your question"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:24 klimaat_helpdesk/users/models.py:11
+msgid "Older than 13 years"
+msgstr ""
+
+#: klimaat_helpdesk/qa/forms.py:33
+msgid "Invalid Handler"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:16
+msgid "Question"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:23
+msgid "Asked by"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:26
+msgid "Name of the person asking"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:31
+msgid "Status"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:37 klimaat_helpdesk/users/__init__.py:15
+msgid "Handler"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:44
+msgid "Answered by"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:51
+msgid "Reviewed by"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:58
+msgid "public"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:91
+msgid "question"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:97
+msgid "author"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:102
+msgid "answer"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:107
+msgid "date answer submitted"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:108
+msgid "answer approved"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:117
+msgid "review"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:119
+msgid "reviewer"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:122
+msgid "Reviewer remarks"
+msgstr ""
+
+#: klimaat_helpdesk/qa/models.py:127
+msgid "submission date"
+msgstr ""
 
 #: klimaat_helpdesk/templates/account/account_inactive.html:5
 #: klimaat_helpdesk/templates/account/account_inactive.html:8
@@ -111,7 +231,7 @@ msgstr ""
 #: klimaat_helpdesk/templates/account/login.html:7
 #: klimaat_helpdesk/templates/account/login.html:11
 #: klimaat_helpdesk/templates/account/login.html:44
-#: klimaat_helpdesk/templates/base.html:68
+#: klimaat_helpdesk/templates/base.html:81
 msgid "Sign In"
 msgstr ""
 
@@ -142,7 +262,7 @@ msgstr ""
 #: klimaat_helpdesk/templates/account/logout.html:5
 #: klimaat_helpdesk/templates/account/logout.html:8
 #: klimaat_helpdesk/templates/account/logout.html:17
-#: klimaat_helpdesk/templates/base.html:59
+#: klimaat_helpdesk/templates/base.html:72
 msgid "Sign Out"
 msgstr ""
 
@@ -220,7 +340,7 @@ msgstr ""
 
 #: klimaat_helpdesk/templates/account/signup.html:9
 #: klimaat_helpdesk/templates/account/signup.html:19
-#: klimaat_helpdesk/templates/base.html:64
+#: klimaat_helpdesk/templates/base.html:77
 msgid "Sign Up"
 msgstr ""
 
@@ -274,22 +394,107 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: klimaat_helpdesk/templates/base.html:55
+#: klimaat_helpdesk/templates/base.html:68
 msgid "My Profile"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/create_answer.html:3
+msgid "Answer to Question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/create_answer.html:16
+#: klimaat_helpdesk/templates/qa/create_review.html:25
+msgid "Submit Answer"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/create_review.html:3
+msgid "Review of Question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/new_question.html:8
+msgid "Welcome to Klimaat Helpdesk"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/new_question.html:9
+msgid ""
+"You can submit a question below. Both your name and e-mail are optional. The "
+"idea is that if you provide us with an e-mail, we will be able to let you "
+"know of the progress with getting an answer for your concerns."
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/new_question.html:10
+msgid "All this website was developed keeping in mind multi-language support."
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/new_question.html:13
+msgid "Ask your question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/new_question.html:18
+msgid "Send question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/qa/question_details.html:25
+msgid "Question details"
+msgstr ""
+
+#: klimaat_helpdesk/templates/users/create_user.html:4
+#: klimaat_helpdesk/templates/users/create_user.html:8
+msgid "Create a new User"
+msgstr ""
+
+#: klimaat_helpdesk/templates/users/create_user.html:13
+msgid "Create User"
+msgstr ""
+
+#: klimaat_helpdesk/users/__init__.py:12
+msgid "User"
+msgstr ""
+
+#: klimaat_helpdesk/users/__init__.py:13
+msgid "Expert"
+msgstr ""
+
+#: klimaat_helpdesk/users/__init__.py:14
+msgid "Reviewer"
+msgstr ""
+
+#: klimaat_helpdesk/users/__init__.py:16
+msgid "Editor"
 msgstr ""
 
 #: klimaat_helpdesk/users/apps.py:7
 msgid "Users"
 msgstr ""
 
-#: klimaat_helpdesk/users/forms.py:16
+#: klimaat_helpdesk/users/forms.py:19
 msgid "This username has already been taken."
 msgstr ""
 
-#: klimaat_helpdesk/users/models.py:11
+#: klimaat_helpdesk/users/forms.py:37
+msgid "Name"
+msgstr ""
+
+#: klimaat_helpdesk/users/forms.py:38
+msgid "Email"
+msgstr ""
+
+#: klimaat_helpdesk/users/forms.py:39
+msgid "Role"
+msgstr ""
+
+#: klimaat_helpdesk/users/forms.py:53
+msgid "This email is already present on the database"
+msgstr ""
+
+#: klimaat_helpdesk/users/models.py:10
 msgid "Name of User"
 msgstr ""
 
-#: klimaat_helpdesk/users/views.py:34
+#: klimaat_helpdesk/users/models.py:12
+msgid "User Role"
+msgstr ""
+
+#: klimaat_helpdesk/users/views.py:36
 msgid "Infos successfully updated"
 msgstr ""

@@ -2,13 +2,30 @@
 {% load crispy_forms_tags i18n %}
 {% block content %}
   <div class="container">
+    <div class="row my-5 ">
+      <div class="col-md-6 mx-auto">
+        <p>You can see below the details of the question. It lists the answers collected, and the review of the answer.
+          {% if question.expert %}
+            If there is still no answer for this question, you can follow
+            <a href="{% url 'questions:create-answer' question.last_answer.pk %}">this link</a>
+          {% else %}
+            This question still has no expert assigned. Go one step back, assign an expert and you will be able to
+            create an answer.
+          {% endif %}
+        </p>
+        <p>Reviews work in the same way, but the reviewer can see both the question and the answer.
+        {% if question.reviewer %}
+          Follow <a href="{% url 'questions:create-review' question.last_review.pk %}">this link</a> to create a review.
+          {% else %}
+          This question has no reviewer assigned yet. Go one step back, assing a reviewer and then you will be able to create a review.
+          {% endif %}
+        </p>
+      </div>
+    </div>
     <h1>{% trans "Question details" %}</h1>
     <div class="row">
       <div class="col-md-6 mx-auto">
-        <form method="post" class="form">{% csrf_token %}
-          {{ form|crispy }}
-          <input type="submit" value="Send message">
-        </form>
+        {{ question.question }}
       </div>
     </div>
     <div class="row">
@@ -23,10 +40,10 @@
               <small>{{ question.date_submitted }}</small>
             </div>
             <div class="card-body">
-              <p class="card-text">{{ answer.answer }}.</p>
+              <p class="card-text">{{ answer.answer }}</p>
             </div>
             <div class="card-footer">
-              &nbsp;
+              <a href="{% url 'questions:create-answer' answer.pk %}" class="btn btn-primary">Edit</a>
             </div>
           </div>
         {% endfor %}
@@ -44,10 +61,10 @@
               <small>{{ review.date_submitted }}</small>
             </div>
             <div class="card-body">
-              <p class="card-text">{{ review.remarks }}.</p>
+              <p class="card-text">{{ review.remarks }}</p>
             </div>
             <div class="card-footer">
-              &nbsp;
+              <a href="{% url 'questions:create-review' review.pk %}" class="btn btn-primary">Edit</a>
             </div>
           </div>
         {% endfor %}

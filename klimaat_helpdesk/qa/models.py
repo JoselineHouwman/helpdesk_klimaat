@@ -70,6 +70,14 @@ class Question(models.Model):
         statuses = dict(STATUS_CHOICES)
         return statuses[self.status]
 
+    @property
+    def last_answer(self):
+        return self.answers.last()
+
+    @property
+    def last_review(self):
+        return self.reviews.last()
+
     def __str__(self):
         name = self.asked_by or self.asked_by_name or 'anonymous'
         statuses = dict(STATUS_CHOICES)

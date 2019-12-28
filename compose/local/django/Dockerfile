@@ -2,13 +2,6 @@ FROM python:3.6-alpine
 
 ENV PYTHONUNBUFFERED 1
 
-#RUN echo http://nl.alpinelinux.org/alpine/v3.10/main > /etc/apk/repositories; \
-#    echo http://nl.alpinelinux.org/alpine/v3.10/community >> /etc/apk/repositories
-
-#RUN ping -c4 dl-cdn.alpinelinux.org
-
-#RUN cat /etc/resolv.conf
-
 RUN apk update \
   # psycopg2 dependencies
   && apk add --virtual build-deps gcc python3-dev musl-dev \

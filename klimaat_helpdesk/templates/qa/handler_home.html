@@ -30,6 +30,7 @@
             </div>
             <div class="card-body">
               <p class="card-text">{{ question.question }}.</p>
+              <a href="{% url 'questions:question-details' question.pk %}" class="btn btn-primary">View Details</a>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">

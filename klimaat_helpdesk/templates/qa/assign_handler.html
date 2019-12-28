@@ -4,6 +4,11 @@
   <div class="container">
     <h1>Assign handler to question</h1>
     <div class="row">
+      <div class="col-12">
+        When you assign a handler to a question, the handler will be able to assign an expert to answer it and a reviewer to follow up. In this way, handlers will have a list of questions to follow up, with different update status.
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-6 mx-auto">
         {{ question.question }}
       </div>
@@ -12,7 +17,7 @@
       <div class="col-md-6 mx-auto">
         <form method="post" class="form">{% csrf_token %}
           {{ form|crispy }}
-          <input type="submit" value="Send message">
+          <input type="submit" value="Assign">
         </form>
       </div>
     </div>
