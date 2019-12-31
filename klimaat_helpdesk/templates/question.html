@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% block content %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="question-breadcrumb boxed">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="#">Questions</a></li>
+          <li><a href="#">Category 1</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Specific Question</a></li>
+        </ul>
+      </nav>
+    </div>
+    <section class="question">
+      <div class="container">
+        <div class="boxed">
+          <p class="title">What is happening to our planet as a result of global warming?</p>
+          <p class="subtitle">Asked by: <strong>Asker of Question</strong></p>
+          <p class="subtitle">Answered by: <strong>Answerer of Questions</strong></p>
+          <p></p>
+        </div>
+      </div>
+    </section>
+    <section class="answer">
+      <div class="container boxed">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras accumsan velit blandit dictum semper. Aliquam rhoncus ex tortor, nec tristique nunc maximus vel. Duis mi dui, malesuada quis ligula eget, auctor tincidunt dolor. Praesent odio justo, mollis sit amet ornare sed, bibendum ut nunc. Fusce neque ligula, ornare in lobortis quis, cursus a erat. Nam quis dui ultrices, efficitur turpis vel, iaculis ex. Phasellus ante justo, lobortis feugiat finibus eget, imperdiet vitae diam. Donec ultrices lacus lectus, vitae vehicula felis malesuada eget. Sed eu felis ut velit porttitor placerat eget eu tellus. Curabitur sed felis eget velit consequat pellentesque eu in mi. Mauris euismod venenatis convallis. Proin scelerisque at metus ac vehicula. Aliquam ac dolor eget odio scelerisque varius sit amet non orci. </p>
+        <p>Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis finibus dui, vitae aliquam ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus est sollicitudin purus, sit amet lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt, urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo urna varius nulla. Proin bibendum tincidunt magna id imperdiet. Cras nisi nisl, vehicula id euismod fringilla, malesuada non velit. Morbi placerat odio quis turpis elementum volutpat. Suspendisse nec malesuada ipsum, vel rhoncus lectus. Donec ipsum velit, semper eget ipsum in, consequat porttitor diam. Sed nulla tellus, dapibus et nulla eu, porttitor sollicitudin magna. Pellentesque consequat rutrum metus, ac fringilla enim tempor in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas consectetur cursus augue eu mollis. </p>
+      </div>
+    </section>
+  </div>
+{% endblock %}

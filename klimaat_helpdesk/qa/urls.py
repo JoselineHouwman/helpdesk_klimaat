@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
 from klimaat_helpdesk.qa.views import new_question, editor_home, assign_handler, assign_reviewer, assign_expert, \
     create_answer, review_answer, handler_home, question_details
@@ -7,7 +8,9 @@ app_name = "questions"
 
 
 urlpatterns = [
-    path('', view=new_question, name='home'),
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('question', TemplateView.as_view(template_name='question.html'), name='question'),
+    path('experts', TemplateView.as_view(template_name='experts.html'), name='experts'),
     path('editor/', view=editor_home, name='editor-home'),
     path('handler/', view=handler_home, name='handler-home'),
     path('question/<int:pk>/details', view=question_details, name='question-details'),
