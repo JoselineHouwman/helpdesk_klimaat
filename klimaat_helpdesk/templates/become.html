@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block content %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <section class="section question-intro">
+        <div class="title">Become an Expert</div>
+        <div><p>Are you an expert on subjects such as climate change, population biology, etc.?.</p>
+          <p>You can submit your application below. Please use your professional e-mail, and as much information as
+            possible so we can verify your identity</p>
+        </div>
+      </section>
+      <section class="section question-form">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <form class="form boxed">
+              <div class="field">
+                <label class="label">Full Name</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Text input">
+                  <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Email input"/>
+                  <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Website</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Email input"/>
+                  <span class="icon is-small is-left"><i class="fas fa-link"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Twitter Handle</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="@twitter"/>
+                  <span class="icon is-small is-left"><i class="fab fa-twitter"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">LinkedIn Username</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="LinkedIn Profile"/>
+                  <span class="icon is-small is-left"><i class="fab fa-linkedin"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Areas of Expertise</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Field"/>
+                  <span class="icon is-small is-left"><i class="fas fa-user-graduate"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Message</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Textarea"></textarea>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    I agree to the <a href="#">terms and conditions</a>
+                  </label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-link">Submit Question</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+{% endblock %}

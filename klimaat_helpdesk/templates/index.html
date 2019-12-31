@@ -4,10 +4,10 @@
   <section class="hero is-primary is-bold">
     <div class="hero-body">
       <div class="container">
-          <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
-          <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
-            regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
-        </div>
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
     </div>
   </section>
   <main class="section">
@@ -33,7 +33,8 @@
                   <strong>What is happening to our planet as a result of global warming?</strong>
                   <br>
                   The planet is getting warmer and warmer, Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras ... <a>read
+                  Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras ... <a
+                        href="{% url 'questions:question' %}">read
                   more</a>
                 </p>
               </div>
@@ -71,7 +72,8 @@
                   <strong>What is happening to our planet as a result of global warming?</strong>
                   <br>
                   The planet is getting warmer and warmer, Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras ... <a>read
+                  Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras ... <a
+                        href="{% url 'questions:question' %}">read
                   more</a>
                 </p>
               </div>
@@ -109,7 +111,8 @@
                   <strong>What is happening to our planet as a result of global warming?</strong>
                   <br>
                   The planet is getting warmer and warmer, Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras ... <a>read
+                  Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras ... <a
+                        href="{% url 'questions:question' %}">read
                   more</a>
                 </p>
               </div>
@@ -147,7 +150,7 @@
           <div class="boxed sidebar-box">
             <h4 class="title section-title">Ask your question</h4>
             <p class="subtitle">Didn't find the answer you were looking for? Submit your own question!</p>
-            <a class="button is-primary">Ask a Question</a>
+            <a class="button is-primary" href="{% url 'questions:ask' %}">Ask a Question</a>
           </div>
         </aside>
       </div>

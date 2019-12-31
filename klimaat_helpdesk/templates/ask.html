@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block content %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <section class="section question-intro">
+        <div class="title">Ask your question</div>
+        <div><p>After you ask your question, we will review it and assign it to an expert to answer it. The entire
+          process
+          may take up to a couple of weeks. If you would like to be informed about the progress, you can leave us your
+          e-mail.</p>
+        </div>
+      </section>
+      <section class="section question-form">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <form class="form boxed">
+              <div class="field">
+                <label class="label">Email (optional)</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Email input"/>
+                  <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                </div>
+                <p class="help">Only if you want to receive updates about your question</p>
+              </div>
+              <div class="field">
+                <label class="label">Message</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Textarea"></textarea>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    I agree to the <a href="#">terms and conditions</a>
+                  </label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-link">Submit Question</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+{% endblock %}

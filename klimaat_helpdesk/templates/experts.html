@@ -1,1 +1,96 @@
 {% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+  <main class="section">
+    <div class="container">
+      <header class="header">
+        <div class="header-title"><h1 class="title">{% trans "Experts answering questions" %}</h1></div>
+        <p class="subtitle is-4">These are all the experts answering questions on our website</p>
+        <p>You can also <a href="{% url 'questions:become-expert' %}">become an expert</a></p>
+      </header>
+      <div class="section">
+        <div class="boxed media">
+          <div class="media-left">
+            <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
+                                                alt="Profile Picture"/></figure>
+          </div>
+          <div class="media-content content">
+            <div class="expert-title">
+              <strong>Expert Number 1</strong>
+              <time>Answering questions since 2019</time>
+            </div>
+            <div class="expert-bio">Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis
+              finibus dui, vitae aliquam ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus
+              est sollicitudin purus, sit amet lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Aenean tincidunt, urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo
+              urna varius nulla. Proin bibendum tincidunt magna id imperdiet. <a href="{% url 'questions:expert' %}">Read more...</a>
+            </div>
+          </div>
+        </div>
+        <div class="boxed media">
+          <div class="media-left">
+            <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
+                                                alt="Profile Picture"/></figure>
+          </div>
+          <div class="media-content content">
+            <div class="expert-title">
+              <strong>Expert Number 2</strong>
+              <time>Answering questions since 2019</time>
+            </div>
+            <div class="expert-bio">Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis
+              finibus dui, vitae aliquam ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus
+              est sollicitudin purus, sit amet lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Aenean tincidunt, urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo
+              urna varius nulla. Proin bibendum tincidunt magna id imperdiet.
+            </div>
+          </div>
+        </div>
+        <div class="boxed media">
+          <div class="media-left">
+            <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
+                                                alt="Profile Picture"/></figure>
+          </div>
+          <div class="media-content content">
+            <div class="expert-title">
+              <strong>Expert Number 3</strong>
+              <time>Answering questions since 2019</time>
+            </div>
+            <div class="expert-bio">Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis
+              finibus dui, vitae aliquam ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus
+              est sollicitudin purus, sit amet lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Aenean tincidunt, urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo
+              urna varius nulla. Proin bibendum tincidunt magna id imperdiet.
+            </div>
+          </div>
+        </div>
+        <div class="boxed media">
+          <div class="media-left">
+            <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
+                                                alt="Profile Picture"/></figure>
+          </div>
+          <div class="media-content content">
+            <div class="expert-title">
+              <strong>Expert Number 4</strong>
+              <time>Answering questions since 2019</time>
+            </div>
+            <div class="expert-bio">Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis
+              finibus dui, vitae aliquam ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus
+              est sollicitudin purus, sit amet lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Aenean tincidunt, urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo
+              urna varius nulla. Proin bibendum tincidunt magna id imperdiet.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

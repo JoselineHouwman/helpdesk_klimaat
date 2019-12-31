@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block content %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="content">
+      <div class="columns">
+        <div class="column is-narrow">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="{% static 'images/portrait_placeholder.png' %}"/>
+          </figure>
+        </div>
+        <div class="column boxed">
+          <p class="title">Expert Number 1</p>
+          <p class="subtitle">Expert in an awesome field</p>
+          <p class="bio">Bio of the expert. Integer vehicula, neque fermentum viverra tempor, dolor leo ornare mi, ut
+            malesuada ex eros eu velit. Suspendisse sit amet finibus ligula. Nam vestibulum ipsum vel sapien sodales,
+            tincidunt convallis tortor rutrum. Pellentesque a consectetur sem. Nullam venenatis eros id justo tristique
+            feugiat. Nulla eleifend metus ut magna eleifend auctor. Cras bibendum nisl sem, ac finibus mi pulvinar
+            tempor.</p>
+          <p>Vivamus sit amet nulla sed mi cursus sodales. Nam nunc justo, vestibulum ac gravida a, commodo eget nulla.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae metus velit. Proin laoreet consequat
+            metus ac ultrices. Donec efficitur lorem in est blandit varius. In tempus odio libero, sagittis ornare sem
+            fringilla ut. Cras nec tempor leo. Curabitur ut lectus eu nulla tincidunt vehicula vel ac enim. Fusce ut
+            sollicitudin velit. In iaculis convallis sem, ac cursus leo. Donec elit massa, malesuada eget lacinia eget,
+            suscipit quis arcu. Cras velit massa, elementum vitae molestie ac, ultrices aliquet enim. Nulla blandit
+            turpis leo, at scelerisque risus molestie vel. Vestibulum dapibus odio quis urna placerat rutrum. Nunc nec
+            efficitur nisl. </p>
+        </div>
+        <aside class="column is-3">
+          <div class="section boxed">
+            <p class="title">Summary</p>
+            <ul class="list expert-summary" style="list-style: none; margin: 0">
+              <li><i class="fas fa-university fa-fw"></i><strong>Affiliation Univ</strong></li>
+              <li><i class="far fa-calendar fa-fw"></i>Since: 2019</li>
+              <li><i class="far fa-question-circle fa-fw"></i>Answers: 18</li>
+              <li><a><i class="fas fa-link fa-fw"></i>Website</a></li>
+              <li><a><i class="fab fa-twitter fa-fw"></i>Twitter</a></li>
+              <li><a><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock %}

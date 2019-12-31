@@ -1,7 +1,9 @@
 /* These styles are generated from project.scss. */
 body{
   background-color: #f6f9fc;
+  margin-bottom: 50px;
 }
+
 
 .alert-debug {
   color: black;
@@ -41,4 +43,13 @@ body{
 
 .answer p{
   margin-bottom: 12px;
+}
+
+.tags i{
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.question-breadcrumb{
+  margin: 20px;
 }

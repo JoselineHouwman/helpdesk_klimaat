@@ -20,21 +20,102 @@
         </ul>
       </nav>
     </div>
-    <section class="question">
-      <div class="container">
-        <div class="boxed">
-          <p class="title">What is happening to our planet as a result of global warming?</p>
-          <p class="subtitle">Asked by: <strong>Asker of Question</strong></p>
-          <p class="subtitle">Answered by: <strong>Answerer of Questions</strong></p>
-          <p></p>
+    <div class="columns">
+      <div class="column">
+        <section class="question">
+          <div class="container">
+            <div class="boxed">
+              <p class="title">What is happening to our planet as a result of global warming?</p>
+              <p class="subtitle">Answered by: <strong>Answerer of Questions</strong></p>
+              <div class="tags">
+                <span class="tag"><i class="fas fa-tag"></i>Tag1</span>
+                <span class="tag"><i class="fas fa-tag"></i>Tag1</span></div>
+              <p></p>
+            </div>
+          </div>
+        </section>
+        <section class="answer">
+          <div class="container boxed">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec egestas odio, sed ullamcorper
+              tortor.
+              Fusce sed ultrices tortor. Cras accumsan velit blandit dictum semper. Aliquam rhoncus ex tortor, nec
+              tristique
+              nunc maximus vel. Duis mi dui, malesuada quis ligula eget, auctor tincidunt dolor. Praesent odio justo,
+              mollis
+              sit amet ornare sed, bibendum ut nunc. Fusce neque ligula, ornare in lobortis quis, cursus a erat. Nam
+              quis
+              dui ultrices, efficitur turpis vel, iaculis ex. Phasellus ante justo, lobortis feugiat finibus eget,
+              imperdiet
+              vitae diam. Donec ultrices lacus lectus, vitae vehicula felis malesuada eget. Sed eu felis ut velit
+              porttitor
+              placerat eget eu tellus. Curabitur sed felis eget velit consequat pellentesque eu in mi. Mauris euismod
+              venenatis convallis. Proin scelerisque at metus ac vehicula. Aliquam ac dolor eget odio scelerisque varius
+              sit
+              amet non orci. </p>
+            <p>Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis finibus dui, vitae
+              aliquam
+              ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus est sollicitudin purus, sit
+              amet
+              lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              tincidunt,
+              urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo urna varius nulla. Proin bibendum
+              tincidunt magna id imperdiet. Cras nisi nisl, vehicula id euismod fringilla, malesuada non velit. Morbi
+              placerat odio quis turpis elementum volutpat. Suspendisse nec malesuada ipsum, vel rhoncus lectus. Donec
+              ipsum
+              velit, semper eget ipsum in, consequat porttitor diam. Sed nulla tellus, dapibus et nulla eu, porttitor
+              sollicitudin magna. Pellentesque consequat rutrum metus, ac fringilla enim tempor in. Lorem ipsum dolor
+              sit
+              amet, consectetur adipiscing elit. Maecenas consectetur cursus augue eu mollis. </p>
+          </div>
+          <hr>
+          <div class="expert-info boxed">
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="{% static 'images/portrait_placeholder.png' %}" alt="Profile">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong><a href="{% url 'questions:expert' %}">Expert Number 1</a></strong>
+                    <br>
+                    Expert in all the important things. And many more. For example, things which matter, and fundamental things.
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fas fa-link"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+      <aside class="column is-one-quarter sidebar">
+        <div class="boxed sidebar-box">
+          <h4 class="title section-title">Categories</h4>
+          <ul class="sidebar-categories">
+            <li><a>Temperature Raise</a></li>
+            <li><a>Politics</a></li>
+            <li><a>CO2</a></li>
+          </ul>
         </div>
-      </div>
-    </section>
-    <section class="answer">
-      <div class="container boxed">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec egestas odio, sed ullamcorper tortor. Fusce sed ultrices tortor. Cras accumsan velit blandit dictum semper. Aliquam rhoncus ex tortor, nec tristique nunc maximus vel. Duis mi dui, malesuada quis ligula eget, auctor tincidunt dolor. Praesent odio justo, mollis sit amet ornare sed, bibendum ut nunc. Fusce neque ligula, ornare in lobortis quis, cursus a erat. Nam quis dui ultrices, efficitur turpis vel, iaculis ex. Phasellus ante justo, lobortis feugiat finibus eget, imperdiet vitae diam. Donec ultrices lacus lectus, vitae vehicula felis malesuada eget. Sed eu felis ut velit porttitor placerat eget eu tellus. Curabitur sed felis eget velit consequat pellentesque eu in mi. Mauris euismod venenatis convallis. Proin scelerisque at metus ac vehicula. Aliquam ac dolor eget odio scelerisque varius sit amet non orci. </p>
-        <p>Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis finibus dui, vitae aliquam ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus est sollicitudin purus, sit amet lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt, urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo urna varius nulla. Proin bibendum tincidunt magna id imperdiet. Cras nisi nisl, vehicula id euismod fringilla, malesuada non velit. Morbi placerat odio quis turpis elementum volutpat. Suspendisse nec malesuada ipsum, vel rhoncus lectus. Donec ipsum velit, semper eget ipsum in, consequat porttitor diam. Sed nulla tellus, dapibus et nulla eu, porttitor sollicitudin magna. Pellentesque consequat rutrum metus, ac fringilla enim tempor in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas consectetur cursus augue eu mollis. </p>
-      </div>
-    </section>
+        <div class="boxed sidebar-box">
+          <h4 class="title section-title">Ask your question</h4>
+          <p class="subtitle">Didn't find the answer you were looking for? Submit your own question!</p>
+          <a class="button is-primary" href="{% url 'questions:ask' %}">Ask a Question</a>
+        </div>
+      </aside>
+    </div>
   </div>
 {% endblock %}
