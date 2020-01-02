@@ -2,13 +2,13 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from klimaat_helpdesk.qa.views import new_question, editor_home, assign_handler, assign_reviewer, assign_expert, \
-    create_answer, review_answer, handler_home, question_details
+    create_answer, review_answer, handler_home, question_details, home_page
 
 app_name = "questions"
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('', view=home_page, name='home'),
     path('question', TemplateView.as_view(template_name='question.html'), name='question'),
     path('experts', TemplateView.as_view(template_name='experts.html'), name='experts'),
     path('ask', TemplateView.as_view(template_name='ask.html'), name='ask'),

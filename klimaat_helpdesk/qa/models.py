@@ -1,12 +1,54 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext as _
 from taggit.managers import TaggableManager
 
-from klimaat_helpdesk.qa import STATUS_CHOICES, ASKED
+from klimaat_helpdesk.qa import STATUS_CHOICES, ASKED, APPROVED
+from klimaat_helpdesk.qa.managers import QuestionManager
 
 User = get_user_model()
+
+
+class TemporaryQuestion(models.Model):
+    """Temporary Questions are those questions asked by users and waiting to be moderated. They hold the information
+    submitted by the users.
+    """
+    question = models.TextField(_('Question'), null=False, blank=False)
+    asked_by = models.EmailField(_('Email'), null=True, blank=True)
+    asked_by_ip = models.GenericIPAddressField(null=True, blank=True)
+    asked_date = models.DateTimeField(auto_now_add=True)
+    over_13 = models.BooleanField(_('Older than 13 years'), default=False)
+
+    approved = models.NullBooleanField(default=None, null=True)
+
+    objects = QuestionManager()
+
+    def approve(self, user):
+        """Copies the relevant information to a new Question and also keeps track of who approved the question"""
+        Question.objects.create(
+            question=self.question,
+            asked_by_email=self.asked_by,
+            status=APPROVED,
+            approved_by=user,
+        )
+        self.approved = True
+        self.save()
+
+    def reject(self):
+        self.approved = False
+        self.save()
+
+    def __str__(self):
+        if self.approved:
+            status = "Approved"
+        elif self.approved is None:
+            status = "Waiting decision"
+        else:
+            status = "Rejected"
+
+        return f"Question {self.pk} - {status}"
 
 
 class Question(models.Model):
@@ -22,13 +64,16 @@ class Question(models.Model):
                                  related_name='questions',
                                  verbose_name=_('Asked by'))
 
-    asked_by_name = models.CharField(max_length=255,
-                                     verbose_name=_('Name of the person asking'),
-                                     null=True,
-                                     blank=True,
-                                     help_text='In case there is name but no e-mail')
+    asked_by_email = models.EmailField(_('Email'), null=True, blank=True)
 
     status = models.IntegerField(verbose_name=_('Status'), choices=STATUS_CHOICES, default=ASKED)
+
+    approved_by = models.ForeignKey(User,
+                                    on_delete=models.SET_NULL,
+                                    null=True,
+                                    blank=True,
+                                    verbose_name=_('Approved by'),
+                                    related_name='questions_approved')
 
     handler = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.SET_NULL,
@@ -53,7 +98,11 @@ class Question(models.Model):
 
     tags = TaggableManager(blank=True)
 
-    # system_tags = TaggableManager(blank=True)  # To store tags such as "need review"
+    category = models.ForeignKey('Category',
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 related_name='articles',
+                                 verbose_name=_('category'))
 
     public = models.BooleanField(default=False, verbose_name=_('public'))
 
@@ -64,6 +113,9 @@ class Question(models.Model):
     date_assigned_reviewer = models.DateTimeField(null=True, blank=True)
     date_reviewed = models.DateTimeField(null=True, blank=True)
     date_accepted = models.DateTimeField(null=True, blank=True)
+    date_published = models.DateTimeField(null=True, blank=True)
+
+    objects = QuestionManager()
 
     @property
     def current_status(self):
@@ -79,7 +131,7 @@ class Question(models.Model):
         return self.reviews.last()
 
     def __str__(self):
-        name = self.asked_by or self.asked_by_name or 'anonymous'
+        name = self.asked_by or self.asked_by_email or 'anonymous'
         statuses = dict(STATUS_CHOICES)
         status = statuses[self.status]
         return f"Question {self.id} by {name}, current status: {status}"
@@ -130,3 +182,19 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review to question {self.question.id} by {self.reviewer.name}"
+
+
+class Category(models.Model):
+    name = models.CharField(_('name'), max_length=255, null=False, blank=False)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save()
+
+    class Meta:
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
+
+    def __str__(self):
+        return f"Category: {self.name}"

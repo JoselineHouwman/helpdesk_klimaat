@@ -3,16 +3,35 @@ from logging import getLogger
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.utils.timezone import now
+
 from django.views.generic import FormView, ListView, UpdateView, DetailView
+from django.views.generic.base import View, TemplateView
 
 from klimaat_helpdesk.qa.forms import AddNewQuestion
-from klimaat_helpdesk.qa.models import Question, Answer, Review
+from klimaat_helpdesk.qa.models import Question, Answer, Review, Category
 from klimaat_helpdesk.users import HANDLER, EXPERT, REVIEWER
 
 User = get_user_model()
 
 logger = getLogger(__name__)
 
+
+class HomePage(TemplateView):
+    template_name = 'qa/home_page.html'
+
+    def get_context_data(self, **kwargs):
+        latest_questions = Question.objects.more_recent(10)
+        categories = Category.objects.all()
+        expert_profile = None
+        context = super(HomePage, self).get_context_data(**kwargs)
+        context.update({
+            'latest_questions': latest_questions,
+            'categories': categories,
+            'expert_profile': expert_profile,
+        })
+        return context
+
+home_page = HomePage.as_view()
 
 class NewQuestion(FormView):
     form_class = AddNewQuestion

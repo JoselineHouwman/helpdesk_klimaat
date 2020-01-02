@@ -2,9 +2,17 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext as _
 
+from klimaat_helpdesk.qa.models import TemporaryQuestion
 from klimaat_helpdesk.users import HANDLER
 
 User = get_user_model()
+
+
+class AskQuestion(forms.ModelForm):
+    class Meta:
+        model = TemporaryQuestion
+        fields = ['asked_by', 'question', 'over_13']
+
 
 
 class AddNewQuestion(forms.Form):
@@ -31,7 +39,3 @@ class AssignHandler(forms.Form):
     handler = forms.ModelChoiceField(queryset, required=True)
 
     _errors = {'invalid Handler': _('Invalid Handler')}
-
-    def __init__(self, *args, **kwargs):
-        print(args)
-        print(kwargs)

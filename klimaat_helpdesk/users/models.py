@@ -1,7 +1,9 @@
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.db.models import CharField, BooleanField, IntegerField
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from taggit.managers import TaggableManager
 
 from klimaat_helpdesk.users import USER_ROLES, USER
 
@@ -21,3 +23,20 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.name} <{self.email}>"
+
+
+class ExpertProfile(models.Model):
+    user = models.ForeignKey(User, related_name='expert_profile', on_delete=models.CASCADE, null=False)
+    bio = models.TextField(_('bio'), null=False, blank=True)
+    profile_picture = models.FileField(verbose_name=_('Picture'))
+    areas_expertise = TaggableManager(verbose_name=_('areas of expertise'))
+    affiliation = models.CharField(_('Affiliation'), blank=False, max_length=128)
+    website = models.URLField(_('Website'), blank=True)
+    twitter_profile = models.CharField(_('Twitter Profile'), blank=True, null=True, max_length=50)
+    linkedin_profile = models.CharField(_('LinkedIn Profile'), blank=True, null=True, max_length=50)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Profile for {self.user}"
+
