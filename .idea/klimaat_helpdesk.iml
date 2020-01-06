@@ -17,6 +17,7 @@
     <orderEntry type="jdk" jdkName="Python 3.6 (klimaat_helpdesk)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bulma" level="application" />
+    <orderEntry type="module" module-name="django-bulma" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="$MODULE_DIR$/requirements/local.txt" />

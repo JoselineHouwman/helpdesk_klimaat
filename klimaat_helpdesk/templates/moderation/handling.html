@@ -1,0 +1,50 @@
+{% extends 'moderation/base.html' %}
+{% load static i18n %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+        <h2 class="title">{% trans "List of questions to handle" %}</h2>
+        {% if not questions %}
+          <p>{% trans "You are currently not handling any questions." %}</p>
+        {% endif %}
+          {% for question in questions %}
+            <article class="media boxed">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{ question.question }}</strong>
+                    <br>
+                    {% if question.asked_by %}Asked by: {{ question.asked_by }} {% endif %}
+                  </p>
+                <p>Current status: {{ question.current_status }}</p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
+                    </a>
+                    <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
+                    </a>
+                    <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          {% endfor %}
+        </main>
+        {% include 'moderation/includes/aside.html' %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

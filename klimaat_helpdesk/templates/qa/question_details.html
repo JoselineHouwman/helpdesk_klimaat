@@ -1,74 +1,124 @@
-{% extends 'base_old.html' %}
-{% load crispy_forms_tags i18n %}
+{% extends "base.html" %}
+{% load i18n static %}
 {% block content %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
   <div class="container">
-    <div class="row my-5 ">
-      <div class="col-md-6 mx-auto">
-        <p>You can see below the details of the question. It lists the answers collected, and the review of the answer.
-          {% if question.expert %}
-            If there is still no answer for this question, you can follow
-            <a href="{% url 'questions:create-answer' question.last_answer.pk %}">this link</a>
-          {% else %}
-            This question still has no expert assigned. Go one step back, assign an expert and you will be able to
-            create an answer.
-          {% endif %}
-        </p>
-        <p>Reviews work in the same way, but the reviewer can see both the question and the answer.
-        {% if question.reviewer %}
-          Follow <a href="{% url 'questions:create-review' question.last_review.pk %}">this link</a> to create a review.
-          {% else %}
-          This question has no reviewer assigned yet. Go one step back, assing a reviewer and then you will be able to create a review.
-          {% endif %}
-        </p>
-      </div>
+    <div class="question-breadcrumb boxed">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="{% url 'questions:home' %}">Questions</a></li>
+          <li><a href="#">{{ question.category }}</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Specific Question</a></li>
+        </ul>
+      </nav>
     </div>
-    <h1>{% trans "Question details" %}</h1>
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        {{ question.question }}
-      </div>
-    </div>
-    <div class="row">
-      <h3>Answers for this question</h3>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        {% for answer in question.answers.all %}
-          <div class="card">
-            <div class="card-header">
-              {{ answer.author }}
-              <small>{{ question.date_submitted }}</small>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ answer.answer }}</p>
-            </div>
-            <div class="card-footer">
-              <a href="{% url 'questions:create-answer' answer.pk %}" class="btn btn-primary">Edit</a>
+    <div class="columns">
+      <div class="column">
+        <section class="question">
+          <div class="container">
+            <div class="boxed">
+              <p class="title">{{ question.title }}</p>
+              <p>{{ question.question }}</p>
+              <p class="subtitle">Answered by: <strong>{{ question.last_answer.author }}</strong></p>
+              <div class="tags">
+                {% for tag in question.tags.all %}
+                  <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>
+                {% endfor %}
+              </div>
             </div>
           </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="row">
-      <h3>Reviews for this question</h3>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        {% for review in question.reviews.all %}
-          <div class="card">
-            <div class="card-header">
-              {{ review.reviewer }}
-              <small>{{ review.date_submitted }}</small>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ review.remarks }}</p>
-            </div>
-            <div class="card-footer">
-              <a href="{% url 'questions:create-review' review.pk %}" class="btn btn-primary">Edit</a>
-            </div>
+        </section>
+        <section class="answer">
+          <div class="container boxed">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec egestas odio, sed ullamcorper
+              tortor.
+              Fusce sed ultrices tortor. Cras accumsan velit blandit dictum semper. Aliquam rhoncus ex tortor, nec
+              tristique
+              nunc maximus vel. Duis mi dui, malesuada quis ligula eget, auctor tincidunt dolor. Praesent odio justo,
+              mollis
+              sit amet ornare sed, bibendum ut nunc. Fusce neque ligula, ornare in lobortis quis, cursus a erat. Nam
+              quis
+              dui ultrices, efficitur turpis vel, iaculis ex. Phasellus ante justo, lobortis feugiat finibus eget,
+              imperdiet
+              vitae diam. Donec ultrices lacus lectus, vitae vehicula felis malesuada eget. Sed eu felis ut velit
+              porttitor
+              placerat eget eu tellus. Curabitur sed felis eget velit consequat pellentesque eu in mi. Mauris euismod
+              venenatis convallis. Proin scelerisque at metus ac vehicula. Aliquam ac dolor eget odio scelerisque varius
+              sit
+              amet non orci. </p>
+            <p>Sed sit amet massa tristique, vestibulum odio a, fermentum ex. Praesent iaculis finibus dui, vitae
+              aliquam
+              ligula maximus in. Praesent faucibus, tellus ornare vehicula eleifend, lacus est sollicitudin purus, sit
+              amet
+              lacinia lectus ipsum eget justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              tincidunt,
+              urna a faucibus tristique, massa nibh varius sem, in sollicitudin justo urna varius nulla. Proin bibendum
+              tincidunt magna id imperdiet. Cras nisi nisl, vehicula id euismod fringilla, malesuada non velit. Morbi
+              placerat odio quis turpis elementum volutpat. Suspendisse nec malesuada ipsum, vel rhoncus lectus. Donec
+              ipsum
+              velit, semper eget ipsum in, consequat porttitor diam. Sed nulla tellus, dapibus et nulla eu, porttitor
+              sollicitudin magna. Pellentesque consequat rutrum metus, ac fringilla enim tempor in. Lorem ipsum dolor
+              sit
+              amet, consectetur adipiscing elit. Maecenas consectetur cursus augue eu mollis. </p>
           </div>
-        {% endfor %}
+          <hr>
+          <div class="expert-info boxed">
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="{% static 'images/portrait_placeholder.png' %}" alt="Profile">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong><a href="{% url 'questions:expert' %}">Expert Number 1</a></strong>
+                    <br>
+                    Expert in all the important things. And many more. For example, things which matter, and fundamental
+                    things.
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fas fa-link"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </div>
+        </section>
       </div>
+      <aside class="column is-one-quarter sidebar">
+        <div class="boxed sidebar-box">
+          <h4 class="title section-title">Categories</h4>
+          <ul class="sidebar-categories">
+            <li><a>Temperature Raise</a></li>
+            <li><a>Politics</a></li>
+            <li><a>CO2</a></li>
+          </ul>
+        </div>
+        <div class="boxed sidebar-box">
+          <h4 class="title section-title">Ask your question</h4>
+          <p class="subtitle">Didn't find the answer you were looking for? Submit your own question!</p>
+          <a class="button is-primary" href="{% url 'questions:ask' %}">Ask a Question</a>
+        </div>
+      </aside>
     </div>
   </div>
-{% endblock content %}
+{% endblock %}

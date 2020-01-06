@@ -1,0 +1,12 @@
+{% load i18n %}
+<aside class="column is-one-quarter sidebar">
+  <div class="boxed sidebar-box">
+    <h4 class="title section-title">{% trans "Tools" %}</h4>
+    <ul class="sidebar-categories">
+      <li><a href="{% url 'moderation:handling' %}">Questions assigned to you</a></li>
+      <li><a>{% trans "Check Answer Progress" %}</a></li>
+      <li><a>{% trans "Create Expert" %}</a></li>
+      <li><a>{% trans "View Stats" %}</a></li>
+    </ul>
+  </div>
+</aside>

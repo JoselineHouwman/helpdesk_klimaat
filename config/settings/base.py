@@ -74,8 +74,10 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
+    "klimaat_helpdesk.core.apps.CoreConfig",
     "klimaat_helpdesk.users.apps.UsersConfig",
     "klimaat_helpdesk.qa.apps.QaConfig",
+    "klimaat_helpdesk.moderation.apps.ModerationConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

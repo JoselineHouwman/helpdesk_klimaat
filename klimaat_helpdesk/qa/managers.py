@@ -15,4 +15,5 @@ class QuestionManager(models.Manager):
 
     def more_recent(self, n):
         """Get the n more recent questions"""
-        return super().get_queryset().filter(status=ANSWERED).order_by('-date_published')
+        return super().get_queryset().filter(status=ANSWERED).order_by('-date_published')[:n]
+

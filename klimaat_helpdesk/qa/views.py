@@ -1,14 +1,14 @@
 from logging import getLogger
 
 from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.timezone import now
 
 from django.views.generic import FormView, ListView, UpdateView, DetailView
 from django.views.generic.base import View, TemplateView
 
-from klimaat_helpdesk.qa.forms import AddNewQuestion
-from klimaat_helpdesk.qa.models import Question, Answer, Review, Category
+from klimaat_helpdesk.qa.forms import AddNewQuestion, AskQuestion
+from klimaat_helpdesk.qa.models import Question, Answer, Review, Category, TemporaryQuestion
 from klimaat_helpdesk.users import HANDLER, EXPERT, REVIEWER
 
 User = get_user_model()
@@ -33,26 +33,18 @@ class HomePage(TemplateView):
 
 home_page = HomePage.as_view()
 
+
 class NewQuestion(FormView):
-    form_class = AddNewQuestion
+    form_class = AskQuestion
     template_name = 'qa/new_question.html'
-    success_url = '/'
+    success_url = reverse_lazy('questions:new-question-thanks')
 
     def form_valid(self, form):
-        user = None
-        if form.cleaned_data['email']:
-            user, created = User.objects.get_or_create(
-                username=form.cleaned_data['email'],
-                email=form.cleaned_data['email'],
-                name=form.cleaned_data['name'])
-
-        Question.objects.create(
+        TemporaryQuestion.objects.create(
             question=form.cleaned_data['question'],
-            asked_by_name=form.cleaned_data['name'],
-            asked_by=user,
+            asked_by=form.cleaned_data.get('asked_by', None),
+            asked_by_ip=self.request.META.get('REMOTE_ADDR')
         )
-        name = form.cleaned_data['name'] or 'Anonymous'
-        logger.info(f'Added new question by {name}')
         return super(NewQuestion, self).form_valid(form)
 
 

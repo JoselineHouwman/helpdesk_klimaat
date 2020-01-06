@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../django-bulma/.idea/django-bulma.iml" filepath="$PROJECT_DIR$/../django-bulma/.idea/django-bulma.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/klimaat_helpdesk.iml" filepath="$PROJECT_DIR$/.idea/klimaat_helpdesk.iml" />
     </modules>
   </component>

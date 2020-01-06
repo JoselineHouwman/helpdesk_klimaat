@@ -1,9 +1,17 @@
-/* These styles are generated from project.scss. */
-body{
+body {
   background-color: #f6f9fc;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
 }
 
+.klimaat_helpdesk {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.klimaat_helpdesk-content {
+  flex: 1;
+}
 
 .alert-debug {
   color: black;
@@ -22,34 +30,49 @@ body{
   background: white;
 }
 
-.sidebar-box{
+.sidebar-box {
   margin-bottom: 1rem;
 }
 
-.sidebar-categories li{
+.sidebar-categories li {
   padding: .3rem;
   font-size: 18px;
 }
 
-.sidebar-categories a{
-    color: rgb(37, 56, 88);
+.sidebar-categories a {
+  color: rgb(37, 56, 88);
 }
 
-.sidebar-categories a:hover{
+.sidebar-categories a:hover {
   background-color: #f6f9fc;
   color: #3c638c;
   border-radius: 3px;
 }
 
-.answer p{
+.answer p {
   margin-bottom: 12px;
 }
 
-.tags i{
+.tags i {
   margin-left: 10px;
   padding: 10px;
 }
 
-.question-breadcrumb{
+.question-breadcrumb {
   margin: 20px;
+}
+
+.help {
+  display: block;
+  font-size: .75rem;
+  margin-top: .25rem;
+}
+
+.help .is-danger {
+  color: #f14668;
+}
+
+.footer{
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
 }

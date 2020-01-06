@@ -9,9 +9,11 @@ User = get_user_model()
 
 
 class AskQuestion(forms.ModelForm):
+    accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
+
     class Meta:
         model = TemporaryQuestion
-        fields = ['asked_by', 'question', 'over_13']
+        fields = ['asked_by', 'question']
 
 
 

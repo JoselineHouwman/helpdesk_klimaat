@@ -22,7 +22,7 @@ class User(AbstractUser):
         return roles[self.role]
 
     def __str__(self):
-        return f"{self.name} <{self.email}>"
+        return f"{self.name}"
 
 
 class ExpertProfile(models.Model):

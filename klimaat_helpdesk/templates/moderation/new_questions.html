@@ -1,0 +1,49 @@
+{% extends 'moderation/base.html' %}
+{% load static i18n %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+          <h2 class="title">{% trans "List of questions to moderate" %}</h2>
+        {% if not questions %}
+          <div class="container-fluid">
+          <h1 class="subtitle">{% blocktrans %}There are no questions to moderate. Hooray!{% endblocktrans %}</h1>
+          <p>{% blocktrans %}Since there are no questions to moderate, you can check whether you have assigned questions
+          to handle{% endblocktrans %}</p>
+          </div>
+        {% endif %}
+          {% for question in questions %}
+            <article class="media boxed">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{ question.question }}</strong>
+                    <br>
+                    {% if question.asked_by %}Asked by: {{ question.asked_by }} {% endif %}
+
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item" aria-label="approve" href="{% url 'moderation:approve' question.pk %}">
+            <span class="icon is-small">
+              <i class="far fa-thumbs-up" title="{% trans "Approve" %}"></i>
+            </span>
+                    </a>
+                    <a class="level-item" aria-label="reject" href="{% url 'moderation:reject' question.pk %}">
+            <span class="icon is-small">
+              <i class="far fa-thumbs-down" title="{% trans "Reject" %}"></i>
+            </span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          {% endfor %}
+        </main>
+        {% include 'moderation/includes/aside.html' %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

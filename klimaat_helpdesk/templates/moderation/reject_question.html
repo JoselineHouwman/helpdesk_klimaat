@@ -1,0 +1,35 @@
+{% extends 'moderation/base.html' %}
+{% load static i18n bulma_tags %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+          <h2 class="title">{% trans "Reject Question" %}</h2>
+          <p>{% blocktrans %}Review the question below. If you believe this question is not appropriate for the website,
+            you can reject it. Please write a short description of why the question was rejected, for example, it is a
+            duplicate, doesn't meet the standards, etc. If the person who submitted the question supplied an e-mail,
+            they will be notified about the decision.
+          {% endblocktrans %}</p>
+          <article class="media boxed">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ question.question }}</strong>
+                  <br>
+                  {% if question.asked_by %}Asked by: {{ question.asked_by }} {% endif %}
+                </p>
+              </div>
+            </div>
+          </article>
+          <form method="post" class="form boxed">
+            {% csrf_token %}
+            {{ form|bulma }}
+            <button class="button is-primary">{% trans "Reject" %}</button>
+          </form>
+        </main>
+        {% include 'moderation/includes/aside.html' %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

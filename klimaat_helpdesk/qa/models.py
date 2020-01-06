@@ -23,11 +23,13 @@ class TemporaryQuestion(models.Model):
 
     approved = models.NullBooleanField(default=None, null=True)
 
+    rejection = models.TextField(_('Rejection reason'), null=True, blank=False)
+
     objects = QuestionManager()
 
     def approve(self, user):
         """Copies the relevant information to a new Question and also keeps track of who approved the question"""
-        Question.objects.create(
+        question = Question.objects.create(
             question=self.question,
             asked_by_email=self.asked_by,
             status=APPROVED,
@@ -35,6 +37,7 @@ class TemporaryQuestion(models.Model):
         )
         self.approved = True
         self.save()
+        return question
 
     def reject(self):
         self.approved = False
@@ -55,6 +58,7 @@ class Question(models.Model):
     """ This model is the core of the application. Each question marks the flow of the application from the moment
     where it was asked until the moment it is published on the website.
     """
+    title = models.CharField(_('Title'), null=True, blank=True, max_length=255)
     question = models.TextField(verbose_name=_('Question'), null=False, blank=False)
 
     asked_by = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -197,4 +201,4 @@ class Category(models.Model):
         verbose_name_plural = _('Categories')
 
     def __str__(self):
-        return f"Category: {self.name}"
+        return f"{self.name}"

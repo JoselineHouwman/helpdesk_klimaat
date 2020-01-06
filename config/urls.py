@@ -12,6 +12,7 @@ urlpatterns = [
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
     path("", include("klimaat_helpdesk.qa.urls", namespace='questions')),
+    path("moderation/", include("klimaat_helpdesk.moderation.urls", namespace="moderation")),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management

@@ -1,0 +1,41 @@
+{% extends 'moderation/base.html' %}
+{% load static i18n %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+          <h2 class="title">{% trans "Approve Question" %}</h2>
+          <p>{% blocktrans %}Review the question below. If you believe it is worth it, approve it. In the next step you
+            will need to select a handler for the question
+          {% endblocktrans %}</p>
+          <article class="media boxed">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ question.question }}</strong>
+                  <br>
+                  {% if question.asked_by %}Asked by: {{ question.asked_by }} {% endif %}
+                </p>
+              </div>
+            </div>
+          </article>
+          <form method="post" class="form boxed">
+            {% csrf_token %}
+            <button class="button is-primary">{% trans "Approve" %}</button>
+          </form>
+        </main>
+        <aside class="column is-one-quarter sidebar">
+          <div class="boxed sidebar-box">
+            <h4 class="title section-title">{% trans "Tools" %}</h4>
+            <ul class="sidebar-categories">
+              <li><a>{% trans "Check Answer Progress" %}</a></li>
+              <li><a>{% trans "Create Expert" %}</a></li>
+              <li><a>{% trans "View Stats" %}</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock %}
