@@ -26,9 +26,9 @@ class User(AbstractUser):
 
 
 class ExpertProfile(models.Model):
-    user = models.ForeignKey(User, related_name='expert_profile', on_delete=models.CASCADE, null=False)
+    user = models.OneToOneField(User, related_name='expert_profile', on_delete=models.CASCADE, null=False)
     bio = models.TextField(_('bio'), null=False, blank=True)
-    profile_picture = models.FileField(verbose_name=_('Picture'))
+    profile_picture = models.FileField(verbose_name=_('Picture'), blank=True)
     areas_expertise = TaggableManager(verbose_name=_('areas of expertise'))
     affiliation = models.CharField(_('Affiliation'), blank=False, max_length=128)
     website = models.URLField(_('Website'), blank=True)

@@ -5,8 +5,9 @@
     <div class="container">
       <div class="columns">
         <main class="column">
-          <h2 class="title">{% trans "Assign a Handler" %}</h2>
-          <p>{% blocktrans %}Select who is going to handle the workflow of question.
+          <h2 class="title">{% trans "Assign an Expert" %}</h2>
+          <p>{% blocktrans %}Select who is going to answer the question. The expert will get an automatic e-mail with
+            information on how to proceed.
           {% endblocktrans %}</p>
           <article class="media boxed">
             <div class="media-content">
@@ -22,7 +23,7 @@
           <form method="post" class="form boxed">
             {% csrf_token %}
             {{ form|bulma }}
-            <button class="button is-primary">{% trans "Assign Handler" %}</button>
+            <button class="button is-primary">{% trans "Assign Expert" %}</button>
           </form>
         </main>
         {% include 'moderation/includes/aside.html' %}

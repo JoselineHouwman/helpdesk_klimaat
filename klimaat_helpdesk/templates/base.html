@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n bulma_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +32,28 @@
 <body class="klimaat_helpdesk">
 {% include 'includes/navbar.html' %}
 <main class="klimaat_helpdesk-content">
-{% block content %}
-{% endblock %}
+  <section class="section">
+    {% block messages %}
+      {% if messages %}
+        <div class="messages columns is-desktop">
+          <div class="column">
+            {% for message in messages %}
+              <div class="message {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
+                <div class="message-body">{{ message }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endblock messages %}
+    <div class="container">
+      {% block content_area %}
+        {% block head %}{% endblock head %}
+        {% block content %}{% endblock content %}
+      {% endblock content_area %}
+    </div>
+  </section>
 </main>
-{% block footer_js %}
-{% endblock %}
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
@@ -44,5 +61,7 @@
     </p>
   </div>
 </footer>
+{% block footer_js %}
+{% endblock %}
 </body>
 </html>

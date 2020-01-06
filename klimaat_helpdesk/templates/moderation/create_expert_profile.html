@@ -1,0 +1,22 @@
+{% extends 'moderation/base.html' %}
+{% load static i18n bulma_tags %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+          <h2 class="title">{% blocktrans with user=user.name %}Create a Profile Expert {{ user }}{% endblocktrans %}</h2>
+          <p>{% blocktrans %}Add the fields you think are necessary. Nothing is really mandatory and the expert can
+            update them later.
+          {% endblocktrans %}</p>
+          <form method="post" class="form boxed">
+            {% csrf_token %}
+            {{ form|bulma }}
+            <button class="button is-primary">{% trans "Create Expert" %}</button>
+          </form>
+        </main>
+        {% include 'moderation/includes/aside.html' %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

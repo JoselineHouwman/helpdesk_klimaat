@@ -1,0 +1,21 @@
+{% extends 'moderation/base.html' %}
+{% load static i18n bulma_tags %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+          <h2 class="title">{% trans "Create an Expert" %}</h2>
+          <p>{% blocktrans %}First create a user, then you will be able to add a profile.
+          {% endblocktrans %}</p>
+          <form method="post" class="form boxed">
+            {% csrf_token %}
+            {{ form|bulma }}
+            <button class="button is-primary">{% trans "Create Expert" %}</button>
+          </form>
+        </main>
+        {% include 'moderation/includes/aside.html' %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
