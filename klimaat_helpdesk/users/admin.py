@@ -3,6 +3,7 @@ from django.contrib.auth import admin as auth_admin
 from django.contrib.auth import get_user_model
 
 from klimaat_helpdesk.users.forms import UserChangeForm, UserCreationForm
+from klimaat_helpdesk.users.models import ExpertProfile
 
 User = get_user_model()
 
@@ -15,3 +16,6 @@ class UserAdmin(auth_admin.UserAdmin):
     fieldsets = (("User", {"fields": ("name", "role")}),) + auth_admin.UserAdmin.fieldsets
     list_display = ["username", "name", "role"]
     search_fields = ["name"]
+
+
+admin.site.register((ExpertProfile, ))

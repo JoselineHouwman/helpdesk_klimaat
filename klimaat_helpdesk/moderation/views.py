@@ -48,7 +48,7 @@ class ApproveQuestion(LoginRequiredMixin, View):
     def post(self, request, **kwargs):
         temp_question = get_object_or_404(self.model, pk=kwargs['pk'])
         question = temp_question.approve(self.request.user)
-        return redirect(reverse_lazy('moderation:assign-hanlder', kwargs={'pk': question.pk}))
+        return redirect(reverse_lazy('moderation:assign-handler', kwargs={'pk': question.pk}))
 
 
 approve_question = ApproveQuestion.as_view()
@@ -142,7 +142,6 @@ class CreateExpert(LoginRequiredMixin, SuccessMessageMixin, FormView):
     form_class = ExpertCreationForm
     template_name = 'moderation/create_expert.html'
     extra_context = {'title': _('Update Expert Profile')}
-    # success_url = reverse_lazy('moderation:handling')
     success_message = _('Expert created successfully')
 
     def form_valid(self, form):
@@ -166,9 +165,10 @@ class CreateExpertProfile(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
               'twitter_profile',
               'linkedin_profile',
               ]
-    template_name = 'moderation/create_expert.html'
+    template_name = 'moderation/create_expert_profile.html'
     success_message = _('Expert profile created successfully')
     success_url = reverse_lazy('moderation:handling')
+    context_object_name = 'profile'
 
 
 create_expert_profile = CreateExpertProfile.as_view()

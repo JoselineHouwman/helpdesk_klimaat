@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n static bulma_tags %}
-{% block content %}
+{% block head %}
   <section class="hero is-primary is-bold">
     <div class="hero-body">
       <div class="container">
@@ -10,6 +10,8 @@
       </div>
     </div>
   </section>
+{% endblock %}
+{% block content %}
   <section class="section">
     <div class="container">
       <section class="section question-intro">
@@ -24,9 +26,10 @@
       <section class="section question-form">
         <div class="columns">
           <div class="column is-half is-offset-one-quarter">
-            <p class="boxed">{% blocktrans %}Remember that some questions are harder to answer, and therefore it may take longer,
-            some are out of the scope of this website, or duplicated. We promise we will be as transparent as possible
-            regarding the decisions taken.{% endblocktrans %}</p>
+            <p class="boxed">{% blocktrans %}Remember that some questions are harder to answer, and therefore it may
+              take longer,
+              some are out of the scope of this website, or duplicated. We promise we will be as transparent as possible
+              regarding the decisions taken.{% endblocktrans %}</p>
           </div>
         </div>
       </section>

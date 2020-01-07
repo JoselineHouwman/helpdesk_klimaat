@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n static bulma_tags %}
-{% block content %}
+{% block head %}
   <section class="hero is-primary is-bold">
     <div class="hero-body">
       <div class="container">
@@ -10,6 +10,8 @@
       </div>
     </div>
   </section>
+{% endblock %}
+{% block content %}
   <section class="section">
     <div class="container">
       <section class="section question-intro">
