@@ -2,11 +2,13 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
+from django.utils.timezone import now
 from django.utils.translation import gettext as _
 from taggit.managers import TaggableManager
 
 from klimaat_helpdesk.qa import STATUS_CHOICES, ASKED, APPROVED
 from klimaat_helpdesk.qa.managers import QuestionManager
+from klimaat_helpdesk.users.models import Expert
 
 User = get_user_model()
 
@@ -202,3 +204,26 @@ class Category(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class Article(models.Model):
+    title = models.CharField(_('title'), max_length=255, blank=False, null=False)
+    text = models.TextField(blank=False, null=False)
+
+    created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name=_('created by'))
+    expert = models.ForeignKey(Expert, on_delete=models.DO_NOTHING, blank=True, null=True)
+
+    creation_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now_add=True)
+
+    public = models.BooleanField(default=False)
+
+    def save(self, **kwargs):
+        self.updated_date = now()
+        super(Article, self).save(**kwargs)
+
+    def __str__(self):
+        return f"{self.pk} - {self.title}"
+
+    class Meta:
+        ordering = ['-creation_date']
